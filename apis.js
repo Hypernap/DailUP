@@ -2,16 +2,18 @@
 const color=["#9dd800"];
 
 window.onload = function() {
-  if (window.location.href=='http://localhost/DailUP/DB_conn.php') create();
-  if (window.location.href=='http://localhost/DailUP/view-profile.html') viewpro();
+  if (window.location.href.toLowerCase()=='http://localhost/DailUP/DB_conn.php'.toLowerCase()) create();
+  if (window.location.href.toLowerCase()=='http://localhost/DailUP/view-profile.html'.toLowerCase()) viewpro();
     
 };
 
 const create = () => {
+  console.log("bot aay gata")
   const parentDiv = document.querySelector('#main_card_info');
   parentDiv.innerHTML="";
   document.querySelector('.HEADING').innerHTML=`<h1>CATAGORIES</h1>`;
   const keys = Object.keys(prof_name);
+  console.log(prof_name);
     for (let i = 0; i < keys.length; i++) {
       newDiv = document.createElement("div");
       newDiv.className = "main_cards_cata inner_card_txt" 
@@ -33,15 +35,18 @@ const profile = (id) =>{
   document.querySelector('.HEADING').innerHTML=`<h1>${id.toUpperCase()}</h1>`;
   parentDiv.innerHTML="";
   let nm=prof_name[id];
-  for (let i = 0; i < nm.length/2; i++) {
+  for (let i = 0; i < nm.length; i++) {
     //parentDiv.innerHTML+= `<div style="background-color:${color[parseInt(Math.random()*100)%color.length]};" id="$}" class=""  >${nm[i][1]}</div>`; 
     newDiv = document.createElement("div");
     newDiv.className = "main_cards_cata inner_card_txt" 
     newDiv.id = nm[i][0]
     newDiv.style.backgroundColor=color[parseInt(Math.random()*100)%color.length];
     newDiv.innerText=nm[i][1];
+
     newDiv.onclick=(event)=>{
-      localStorage.setItem('info',JSON.stringify(all_info[event.target.id]));
+      let goingToLocalStorage = all_info[event.target.id].slice();
+      goingToLocalStorage.push(id);
+      localStorage.setItem('info',JSON.stringify(goingToLocalStorage));
       window.location.href="http://localhost/DailUP/view-profile.html";
     };
     parentDiv.appendChild(newDiv); 
@@ -53,5 +58,18 @@ const viewpro = () =>{
   const infos=localStorage.getItem('info');
   const data=JSON.parse(infos);
   console.log(data);
-  document.querySelector('#name').innerHTML=data[0]
+
+  document.querySelector('#name').innerHTML=data[0];
+  document.querySelector('#rating').innerHTML=data[6];
+  document.querySelector('#table_name').innerHTML=data[0];
+  document.querySelector('#table_age').innerHTML=data[1];
+  document.querySelector('#table_ph').innerHTML=data[2];
+  document.querySelector('#table_mail').innerHTML=data[3];
+  document.querySelector('#table_prof').innerHTML=data[8];
+  document.querySelector('#about').innerHTML=data[4];
+  document.querySelector('#add').innerHTML=data[5];
+
+  
+  document.querySelector('img').scr=data[7];
+  
 }
