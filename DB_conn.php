@@ -22,7 +22,7 @@ while($row = $result->fetch_assoc()) {
     $result2 = $conn->query($sql2);
     while($row2 = $result2->fetch_assoc()){
         array_push($ppl,array($row["id"],$row2["user_name"]));
-        $user_prof[$row2["id"]]=array($row2["user_name"],$row2["age"],$row2["phone"],$row2["email"],$row2["about"],$row2["rating"],$row2["profile_pic"]);
+        $user_prof[$row2["id"]]=array($row2["user_name"],$row2["age"],$row2["phone"],$row2["email"],$row2["about"],$row2["additional_info"],$row2["rating"],$row2["profile_pic"]);
     }
     $users_dict[$row["field"]]=$ppl;
   }
