@@ -50,11 +50,21 @@ if ($conn->query($sql) === TRUE) {
 
 $sql = "INSERT INTO Catogories
 VALUES (1,'Teaching')";
-$conn->query($sql);
+if($conn->query($sql)===FALSE) {
+  echo $conn->error;
+}
+else {
+  echo "chor catogries";
+}
 
 $sql = "INSERT INTO worker_info
 VALUES (1,'Ram',18,99999,'ram@gmail.com','i am theif','addition_info de rha hu',5.5,1,'user.png')";
-$conn->query($sql);
+if($conn->query($sql)===FALSE) {
+  echo $conn->error;
+}
+else {
+  echo "worker inserted";
+}
 
 
 $conn->close();
