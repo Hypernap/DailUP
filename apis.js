@@ -3,8 +3,8 @@ const color=["#9dd800"];
 
 window.onload = function() {
   if (window.location.href.toLowerCase()=='http://localhost/DailUP/DB_conn.php'.toLowerCase()) create();
-  if (window.location.href.toLowerCase()=='http://localhost/DailUP/view-profile.html'.toLowerCase()) viewpro();
-    
+  if (window.location.href.toLowerCase()=='http://localhost/DailUP/view-profilebtn.html'.toLowerCase()) viewpro();
+  if (window.location.href.toLowerCase()=='http://localhost/DailUP/view-profile.html'.toLowerCase()) viewpro();   
 };
 
 const create = () => {
@@ -47,7 +47,7 @@ const profile = (id) =>{
       let goingToLocalStorage = all_info[event.target.id].slice();
       goingToLocalStorage.push(id);
       localStorage.setItem('info',JSON.stringify(goingToLocalStorage));
-      window.location.href="http://localhost/DailUP/view-profile.html";
+      window.location.href="http://localhost/DailUP/view-profilebtn.html";
     };
     parentDiv.appendChild(newDiv); 
   }
@@ -73,3 +73,25 @@ const viewpro = () =>{
   document.querySelector('img').scr=data[7];
   
 }
+
+
+
+const searchInput = document.getElementById("search");
+searchInput.addEventListener("input", function() {
+  console.log("event list");
+  const searchInput = document.getElementById("search");
+  const itemContainer = document.getElementById("main_card_info");
+  const items = itemContainer.getElementsByClassName("main_cards_cata");
+  searchInput.addEventListener("input", function() {
+    const searchTerm = searchInput.value.toLowerCase();
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const text = item.textContent.toLowerCase();
+      if (text.includes(searchTerm)) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    }
+  });
+});

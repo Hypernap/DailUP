@@ -73,7 +73,7 @@ $conn->close();
                         <?php
                     }
                 ?>
-                <input type="search" class="search_bar" size="19" placeholder=" SEARCH" >
+                <input type="search" class="search_bar" id="search" size="19" placeholder=" SEARCH" >
             </div>
             <div class="side_main_container">
                 <div class="HEADING"><h2>CATOGORIES</h2></div>

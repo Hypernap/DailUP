@@ -7,7 +7,7 @@ function formValidation(){
     let password = document.getElementById("pwd");
     let conpassword = document.getElementById("cpwd");
 
-    if(user.value.length < 8){
+    if(user.value.length < 4){
         document.getElementById("user-error").textContent = "Username requires at least 8 characters";
         document.getElementById("user-error").style.display = "block";
         document.getElementById("user-error").style.color = "red";

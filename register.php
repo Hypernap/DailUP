@@ -15,7 +15,7 @@
 
         mysqli_query($conn,$sql);
     
-        $csql = "SELECT * from workers_auth where worker_uname = '$name' or worker_pass = '$pas'";
+        $csql = "SELECT * from workers_auth where worker_uname = '$name'";
         
         $result = mysqli_query($conn,$csql);
 
