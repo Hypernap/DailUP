@@ -6,14 +6,16 @@
         $mail = $_POST['email'];
         $pas = $_POST['password'];
 
-        $sql = "CREATE TABLE IF NOT EXISTS Catogories(
+        $sql = "CREATE TABLE IF NOT EXISTS workers_auth(
             worker_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             worker_uname VARCHAR(50),
             worker_mail VARCHAR(50),
             worker_pass VARCHAR(20)
             )";
+
+        mysqli_query($conn,$sql);
     
-        $csql = "SELECT * from workers where worker_uname = '$name' or worker_pass = '$pas'";
+        $csql = "SELECT * from workers_auth where worker_uname = '$name'";
         
         $result = mysqli_query($conn,$csql);
 
@@ -23,7 +25,7 @@
         }
         else{
 
-            $sql = "INSERT INTO workers (worker_uname, worker_mail,worker_pass) VALUES ('$name', '$mail','$pas')";
+            $sql = "INSERT INTO workers_auth (worker_uname, worker_mail,worker_pass) VALUES ('$name', '$mail','$pas')";
 
             if (mysqli_query($conn, $sql)) {
                 header('Location:profileform.php');

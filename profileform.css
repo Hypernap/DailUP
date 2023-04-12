@@ -11,12 +11,13 @@ body{
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(135deg, #26292b, #170120);
+  /* background-color: #141414; */
 }
 .container{
   max-width: 700px;
   width: 100%;
-  background-color: #fff;
+  background-color: #fff3f3;
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
